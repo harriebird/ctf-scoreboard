@@ -4,11 +4,24 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from .models import User, Capture, Flag
+from .user import userLogin, userLogout, userCheck, userRegister
 from django.db.models import Sum
+
 
 # Create your views here.
 # from django.shortcuts import get_object_or_404, render
 
+def login(request):
+    if request.method == 'POST':
+        return userLogin(request)
+    else:
+        return render(request, 'user/login.html')
+
+def logout(request):
+    return userLogout(request)
+
+def index(request):
+    return userCheck(request)
 
 def results(request):
     return render(request, 'home.html')
@@ -30,7 +43,8 @@ def rank(request):
         print('{} {}'.format(user, user.total_points))
     return render(request, 'home.html')
 
-class Register(generic.CreateView):
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'register.html'
+def register(request):
+    if request.method == 'POST':
+        return userRegister(request)
+    else:
+        return render(request, 'user/register.html')
