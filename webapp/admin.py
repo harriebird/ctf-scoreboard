@@ -4,7 +4,7 @@ from .models import Flag, Capture
 
 # Register your models here.
 class FlagAdmin(admin.ModelAdmin):
-    list_display = ['code', 'points']
+    list_display = ['name', 'code', 'points']
 
 admin.site.register(Flag, FlagAdmin)
 

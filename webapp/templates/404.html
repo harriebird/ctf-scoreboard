@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="text-center text-light mx-auto">
+    <h2 class="mr-robot">You're in the</h2>
+    <h1 class="mr-robot">middle of</h1>
+    <h1 class="display-5 mr-robot">nowhere</h1>
+    <h1 class="display-3 mr-robot mr-red">AMIGO</h1>
+
+    <a href="{% url 'home' %}" class="btn btn-lg btn-info btn-block">Okay, take me back</a>
+  </div>
+</div>
+{% endblock %}

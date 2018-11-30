@@ -1,4 +1,33 @@
-.form-login {
-  max-width: 350px;
-  margin: 80px auto;
+@font-face {
+  font-family: 'MrRobot';
+  font-style: normal;
+  font-weight: normal;
+  src: local('MrRobot'), url('mr_robot.woff') format('woff');
+}
+
+.mr-robot {
+  font-family: 'MrRobot';
+  letter-spacing: 0.1em;
+}
+
+.mr-red {
+  color: #c0000f;
+}
+
+img#bg {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -999;
+}
+
+@media screen and (max-width: 1024px) {
+  img.bg {
+    left: 50%;
+    margin-left: -512px;
+  }
 }

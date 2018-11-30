@@ -25,7 +25,7 @@ SECRET_KEY = '!)whkkf(#u08*65zflr)#y(*o2v415n#m*xx^r@b8m83x&6=!#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'webapp.middleware.AdminLoginMiddleware',
 ]
 
 ROOT_URLCONF = 'scoreboard.urls'
@@ -121,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_REDIRECT_URL = '/home/'
 LOGOUT_REDIRECT_URL = '/'
