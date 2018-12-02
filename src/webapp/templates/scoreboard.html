@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Scoreboard{% endblock %}
+
+{% block content %}
+<h2 class="text-center mr-robot mr-red">CTF Scoreboard</h2>
+<table class="table table-dark table-striped mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Rank</th>
+      {% if data.team_mode %}
+          <th scope="col">Team</th>
+      {% else %}
+          <th scope="col">Handle</th>
+      {% endif %}
+      <th scope="col">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if data.ranking %}
+        {% if data.team_mode %}
+            {% for team in data.ranking %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ team.name }}</td>
+                  <td>{% if team.total_points == None %}0{% else %}{{ team.total_points }}{% endif %}</td>
+                </tr>
+            {% endfor%}
+        {% else %}
+            {% for user in data.ranking %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ user.username }}</td>
+                  <td>{% if user.total_points == None %}0{% else %}{{ user.total_points }}{% endif %}</td>
+                </tr>
+            {% endfor%}
+        {% endif %}
+    {% else %}
+      <tr>
+        <td colspan="5">
+          <h4>There are no scores yet...</h4>
+        </td>
+      </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% endblock %}
