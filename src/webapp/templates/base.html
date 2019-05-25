@@ -30,9 +30,14 @@
             {% endif %}
           </ul>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item mr-lg-3">
+            <li class="nav-item mr-lg-2">
               <a class="btn btn-outline-light btn-block" href="{% url 'rank' %}">View Scores</a>
             </li>
+            {% if data.team_mode %}
+                <li class="nav-item mr-lg-3">
+                  <a class="btn btn-outline-light btn-block" href="{% url 'teams' %}">View Teams</a>
+                </li>
+            {% endif %}
             {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="btn btn-outline-danger btn-block" href="{% url 'logout' %}">Logout</a>

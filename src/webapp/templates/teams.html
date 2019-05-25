@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Scoreboard{% endblock %}
+
+{% block content %}
+<h2 class="text-center mr-robot mr-red">CTF Teams</h2>
+<div class="row">
+    {% for team in data.teams %}
+        <div class="col-4 mb-3">
+            <div class="card bg-dark">
+              <div class="card-header text-light font-weight-bold">
+                <h5>{{ team.name }}</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                  {% for member in team.members %}
+                      <li class="list-group-item bg-dark text-light">{{ member.user.username }}</li>
+                  {% endfor %}
+              </ul>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

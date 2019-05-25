@@ -24,13 +24,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('webapp.urls')),
 ]
-
-def add_static(prefix, view=serve, **kwargs):
-    return [
-        re_path(r'^%s(?P<path>.*)$' % re.escape(prefix.lstrip('/')), view, kwargs=kwargs),
-    ]
-
-if settings.DEBUG:
-    urlpatterns += static.static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-else:
-    urlpatterns += add_static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

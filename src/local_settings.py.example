@@ -6,6 +6,10 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'ctf-scoreboard-db.sqlite3'),
     }
 }
+
+# Team Configuration
+TEAM_MODE = True
+TEAM_MEMBER_LIMIT = 3
