@@ -82,7 +82,15 @@ def userCapture(request):
     except ObjectDoesNotExist:
         messages.error(request, 'Flag does not exist. Better try again!')
         return getUserCaptures(request)
-    user_flag = Capture.objects.filter(user=request.user, flag=flag).count()
+
+    user_flag = 0
+    if settings.TEAM_MODE:
+        team = TeamMember.objects.filter(team=TeamMember.objects.get(user=request.user).team)
+        for member in team:
+            user_flag += Capture.objects.filter(user=member.user, flag=flag).count()
+    else:
+        user_flag = Capture.objects.filter(user=request.user, flag=flag).count()
+
     if user_flag == 0:
         Capture.objects.create(user=request.user, flag=flag)
         messages.success(request, 'Flag was successfully captured.')
@@ -101,7 +109,9 @@ def getUserCaptures(request):
                 cap_flags.append(capture)
     else:
         cap_flags = Capture.objects.filter(user=request.user).order_by('-time')
-    return render(request, 'home.html', {'cap_flags': cap_flags, 'total_points': sumCapturePoints(cap_flags)})
+    return render(request,
+                  'home.html', {'data': {'cap_flags': cap_flags,
+                                         'total_points': sumCapturePoints(cap_flags), 'team_mode': settings.TEAM_MODE}})
 
 
 def sumCapturePoints(captures):

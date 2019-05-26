@@ -13,3 +13,8 @@ DATABASES = {
 # Team Configuration
 TEAM_MODE = True
 TEAM_MEMBER_LIMIT = 3
+
+# List of IP Addresses that is allowed to access the admin dashboard
+ADMIN_IPS = [
+    '127.0.0.1',
+]

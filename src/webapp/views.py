@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.views.static import serve
-from .models import User, Team, TeamMember
+from .models import User, Team, TeamMember, Capture
 from .user import userLogin, userLogout, userCheck, userRegister, userCapture, getUserCaptures
 from django.db.models import Sum
 
@@ -75,3 +75,8 @@ def teams(request):
 
 def showfile(request, path):
     return serve(request, path, settings.STATIC_ROOT)
+
+
+def history(request):
+    logs = Capture.objects.all().order_by('-time')
+    return render(request, 'history.html', {'data': {'history': logs, 'team_mode': settings.TEAM_MODE}})

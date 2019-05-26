@@ -10,6 +10,7 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('rank/', views.rank, name='rank'),
     path('register/', views.register, name='register'),
+    path('history/', views.history, name='history'),
     re_path(r'^static/(?P<path>.*)$', views.showfile),
 ]
 

@@ -9,8 +9,12 @@
     <div class="text-center text-light col-lg-4">
       <div>
         <h3 class="mr-robot">Hi {{ user.username }}!</h3>
-        <h2 class="mr-robot">You have</h2>
-        <h1 class="display-1 mr-robot mr-red">{{ total_points }}</h1>
+        {% if data.team_mode %}
+            <h2 class="mr-robot">Your team has</h2>
+        {% else %}
+            <h2 class="mr-robot">You have</h2>
+        {% endif %}
+        <h1 class="display-1 mr-robot mr-red">{{ data.total_points }}</h1>
         <h2 class="mr-robot">POINTS</h2>
       </div>
       <form method="post">
@@ -32,8 +36,8 @@
           </tr>
         </thead>
         <tbody>
-          {% if cap_flags %}
-            {% for cap_flag in cap_flags %}
+          {% if data.cap_flags %}
+            {% for cap_flag in data.cap_flags %}
               <tr>
                 <td>{{ cap_flag.flag.name }}</td>
                 <td>{{ cap_flag.flag.points }}</td>
