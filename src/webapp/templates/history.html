@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Scoreboard{% endblock %}
+
+{% block content %}
+<h2 class="text-center mr-robot mr-red">CTF History</h2>
+<table class="table table-dark table-striped mt-3">
+  <thead>
+    <tr>
+        <th scope="col">Time</th>
+        <th scope="col">Event</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if data.history %}
+        {% for event in data.history %}
+            <tr>
+                <td>{{ event.time }}</td>
+                <td>{{ event.user.username }} captured a flag worth {{ event.flag.points }} points</td>
+            </tr>
+        {% endfor%}
+    {% else %}
+      <tr>
+        <td colspan="5">
+          <h4>There are no captures yet...</h4>
+        </td>
+      </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% endblock %}

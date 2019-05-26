@@ -8,8 +8,8 @@
     {% for team in data.teams %}
         <div class="col-4 mb-3">
             <div class="card bg-dark">
-              <div class="card-header text-light font-weight-bold">
-                <h5>{{ team.name }}</h5>
+              <div class="card-header text-light">
+                <h5><b>{{ team.name }}</b></h5>
               </div>
               <ul class="list-group list-group-flush">
                   {% for member in team.members %}

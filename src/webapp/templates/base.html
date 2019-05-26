@@ -31,11 +31,14 @@
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-lg-2">
-              <a class="btn btn-outline-light btn-block" href="{% url 'rank' %}">View Scores</a>
+              <a class="btn btn-outline-light btn-block" href="{% url 'rank' %}">Scoreboard</a>
+            </li>
+            <li class="nav-item mr-lg-2">
+              <a class="btn btn-outline-light btn-block" href="{% url 'history' %}">History</a>
             </li>
             {% if data.team_mode %}
                 <li class="nav-item mr-lg-3">
-                  <a class="btn btn-outline-light btn-block" href="{% url 'teams' %}">View Teams</a>
+                  <a class="btn btn-outline-light btn-block" href="{% url 'teams' %}">Teams</a>
                 </li>
             {% endif %}
             {% if user.is_authenticated %}
