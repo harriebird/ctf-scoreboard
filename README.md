@@ -3,11 +3,12 @@ A scoreboard made for the Capture the Flag events of Hackm3.
 
 ### Installation
 1. Clone the repository of this project.
-2. Run `deploy.sh` to automate the the preparation of the following:
-  * Creation of virtual environment
-  * Installation of the required dependencies.
-  * Setting up of the initial configuration of `local_settings.py`
-  * Migration of models and static collection
+2. Set a `SECRET_KEY` in the settings file located at `src/scoreboard/settings.py`.
+3. Run `deploy.sh` to automate the preparation of the following:
+   * Creation of virtual environment
+   * Installation of the required dependencies.
+   * Setting up of the initial configuration of `local_settings.py`
+   * Migration of models and static collection
 
 ### Running the Application
 While on the root project directory, run `run.sh` to launch the application on port 1337.
